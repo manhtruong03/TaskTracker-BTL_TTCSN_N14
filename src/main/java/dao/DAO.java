@@ -18,6 +18,7 @@ public class DAO {
 	
 	public static final String USER_FILE_PATH = "src/assets/data/users.txt";
 	public static final String PROJECT_FILE_PATH = "src/assets/data/projects.txt";
+	public static final String PROJECT_MEMBER_FILE_PATH = "src/assets/data/projectMembers.txt";
 	public static final String TASK_FILE_PATH = "src/assets/data/tasks.txt";
 	public static final String TODO_FILE_PATH = "src/assets/data/todos.txt";
 	public static final String COMMENT_FILE_PATH = "src/assets/data/comments.txt";
