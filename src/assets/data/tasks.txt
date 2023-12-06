@@ -1,7 +1,4 @@
-6
-main.java.models.Task@5b738e92|TaskName|Description|CreationDate|StartDate|Duedate|alabatrap|Position|ProjectID
-main.java.models.Task@2b366374|Text1|Date|TaskID|UserID|1|2|3|4
-main.java.models.Task@35a65e42|Text2|Date|TaskID|UserID|null|null|god|null
-main.java.models.Task@68d18464|Text3|Date|TaskID|UserID|null|null|null|null
-main.java.models.Task@2f1180f2|TaskName|Description|CreationDate|StartDate|Duedate|Status|Position|ProjectID
-main.java.models.Task@37a46ba7|TaskName|Description|CreationDate|StartDate|Duedate|Status|Position|ProjectID
+3
+main.java.models.Task@2a324b85|Text1|Date|TaskID|UserID|1|god|3|4
+main.java.models.Task@12fef81|TaskName|Description|CreationDate|StartDate|Duedate|Status||ProjectID
+main.java.models.Task@3aac613d|Text3|Date|TaskID|UserID|null|null|null|null

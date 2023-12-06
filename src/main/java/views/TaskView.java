@@ -52,6 +52,8 @@ public class TaskView {
 		frame3 frame3 = new frame3();
 		frame4 frame4 = new frame4();
 		frame4 frame5 = new frame4();
+		frame4 frame6 = new frame4();
+		frame4 frame7 = new frame4();
 		
 		frame1.setVisible(true);
 		
@@ -61,13 +63,19 @@ public class TaskView {
 		frame1.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Thêm");
-		btnNewButton_1.setBounds(25, 207, 89, 23);
+		btnNewButton_1.setBounds(200, 600, 89, 23);
 		
 		JButton btnNewButton_2 = new JButton("Sửa");
-		btnNewButton_2.setBounds(181, 207, 89, 23);
+		btnNewButton_2.setBounds(600, 600, 89, 23);
 		
 		JButton btnNewButton_3 = new JButton("Xóa");
-		btnNewButton_3.setBounds(319, 207, 89, 23);
+		btnNewButton_3.setBounds(1000, 600, 89, 23);
+		
+		JButton btnNewButton_8 = new JButton("Cập nhật trạng thái");
+		btnNewButton_8.setBounds(400, 500, 180, 23);
+		
+		JButton btnNewButton_9 = new JButton("Sửa vị trí");
+		btnNewButton_9.setBounds(800, 500, 100, 23);
 		
 		JTable table = new JTable();
 		table.setModel(new DefaultTableModel(
@@ -76,12 +84,14 @@ public class TaskView {
 				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
 			}
 		));
-		table.setBounds(0, 36, 434, 140);
+		table.setBounds(130, 69, 1100, 400);
 
 		frame2.getContentPane().add(table);
 		frame2.getContentPane().add(btnNewButton_1);
 		frame2.getContentPane().add(btnNewButton_2);
 		frame2.getContentPane().add(btnNewButton_3);
+		frame2.getContentPane().add(btnNewButton_8);
+		frame2.getContentPane().add(btnNewButton_9);
 		
 		JButton btnNewButton_4 = new JButton("Hoàn tất");
 		btnNewButton_4.setBounds(106, 111, 89, 23);
@@ -216,7 +226,69 @@ public class TaskView {
 		frame5.getContentPane().add(txtStartdate1);
 		frame5.getContentPane().add(txtTaskname1);
 		frame5.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("MÀN HÌNH CẬP NHẬT TRẠNG THÁI");
+		lblNewLabel_2.setBounds(30, 11, 200, 14);
+		
+		JLabel lblNewLabel_3 = new JLabel("Nhập id task bạn muốn cập nhật");
+		lblNewLabel_3.setBounds(30, 56, 210, 14);
+		
+		JLabel lblNewLabel_4 = new JLabel("Nhập trạng thái bạn muốn cập nhật");
+		lblNewLabel_4.setBounds(30, 96, 210, 14);
+		
+		JButton btnNewButton_10 = new JButton("Đồng ý");
+		btnNewButton_10.setBounds(84, 188, 89, 23);
+		frame6.getContentPane().add(btnNewButton_10);
+		
+		JButton btnNewButton_11 = new JButton("Từ chối");
+		btnNewButton_11.setBounds(261, 188, 89, 23);
+		frame6.getContentPane().add(btnNewButton_11);
+		
+		JTextField textField_1 = new JTextField();
+		textField_1.setBounds(250, 56, 150, 20);
+		textField_1.setColumns(10);
+		
+		JTextField textField_2 = new JTextField();
+		textField_2.setBounds(250, 96, 150, 20);
+		textField_2.setColumns(10);
+		
+		frame6.getContentPane().add(lblNewLabel_2);
+		frame6.getContentPane().add(lblNewLabel_3);
+		frame6.getContentPane().add(lblNewLabel_4);
+		frame6.getContentPane().add(textField_1);
+		frame6.getContentPane().add(textField_2);
 
+		JLabel lblNewLabel_5 = new JLabel("MÀN HÌNH THAY ĐỔI VỊ TRÍ");
+		lblNewLabel_5.setBounds(30, 11, 200, 14);
+		
+		JLabel lblNewLabel_6 = new JLabel("Nhập id task bạn muốn thay đổi");
+		lblNewLabel_6.setBounds(30, 56, 210, 14);
+		
+		JLabel lblNewLabel_7 = new JLabel("Nhập vị trí bạn muốn thay đổi");
+		lblNewLabel_7.setBounds(30, 96, 210, 14);
+		
+		JButton btnNewButton_12 = new JButton("Đồng ý");
+		btnNewButton_12.setBounds(84, 188, 89, 23);
+		frame7.getContentPane().add(btnNewButton_12);
+		
+		JButton btnNewButton_13 = new JButton("Từ chối");
+		btnNewButton_13.setBounds(261, 188, 89, 23);
+		frame7.getContentPane().add(btnNewButton_13);
+		
+		JTextField textField_3 = new JTextField();
+		textField_3.setBounds(250, 56, 150, 20);
+		textField_3.setColumns(10);
+		
+		JTextField textField_4 = new JTextField();
+		textField_4.setBounds(250, 96, 150, 20);
+		textField_4.setColumns(10);
+		
+		frame7.getContentPane().add(lblNewLabel_5);
+		frame7.getContentPane().add(lblNewLabel_6);
+		frame7.getContentPane().add(lblNewLabel_7);
+		frame7.getContentPane().add(textField_3);
+		frame7.getContentPane().add(textField_4);
+		
 		// Tạo một sự kiện click cho nút đó
 		btnNewButton.addActionListener(new ActionListener() {
 		    @Override
@@ -278,7 +350,39 @@ public class TaskView {
 				if(x==1) {
 					test.deleteTask(text);
 					test.saveTaskController();
-					test.updateTaskController();
+					String[][] array1 = new String[test.getListOfTask().size()][9];
+					for (int i = 0; i < test.getListOfTask().size(); i++) {
+			            // Lấy ra Object hiện tại
+			            Task Ta = test.getListOfTask().get(i);
+
+			            // Lấy ra tên và tuổi của Object hiện tại
+			            String id = Ta.getId();
+			            String name = Ta.getTaskName();
+			            String description = Ta.getDescription();
+			            String creationDate = Ta.getCreationDate();
+			            String startDate = Ta.getStartDate();
+			            String dueDate = Ta.getDueDate();
+			            String status = Ta.getStatus();
+			            String position = Ta.getPosition();
+			            String projectID = Ta.getProjectID();
+			            
+			            // Lưu trữ tên và tuổi vào mảng 2 chiều
+			            array1[i][0] = id;
+			            array1[i][1] = name;
+			            array1[i][2] = description;
+			            array1[i][3] = creationDate;
+			            array1[i][4] = startDate;
+			            array1[i][5] = dueDate;
+			            array1[i][6] = status;
+			            array1[i][7] = position;
+			            array1[i][8] = projectID;
+			        }
+					table.setModel(new DefaultTableModel(
+							array1,
+							new String[] {
+								"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+							}
+						));
 					frame2.setVisible(true);
 					frame3.setVisible(false);
 				}
@@ -319,7 +423,39 @@ public class TaskView {
 				if(x==1) {
 					test.editTask(txtIdBnMun.getText(), infor);
 					test.saveTaskController();
-					
+					String[][] array1 = new String[test.getListOfTask().size()][9];
+					for (int i = 0; i < test.getListOfTask().size(); i++) {
+			            // Lấy ra Object hiện tại
+			            Task Ta = test.getListOfTask().get(i);
+
+			            // Lấy ra tên và tuổi của Object hiện tại
+			            String id = Ta.getId();
+			            String name = Ta.getTaskName();
+			            String description = Ta.getDescription();
+			            String creationDate = Ta.getCreationDate();
+			            String startDate = Ta.getStartDate();
+			            String dueDate = Ta.getDueDate();
+			            String status = Ta.getStatus();
+			            String position = Ta.getPosition();
+			            String projectID = Ta.getProjectID();
+			            
+			            // Lưu trữ tên và tuổi vào mảng 2 chiều
+			            array1[i][0] = id;
+			            array1[i][1] = name;
+			            array1[i][2] = description;
+			            array1[i][3] = creationDate;
+			            array1[i][4] = startDate;
+			            array1[i][5] = dueDate;
+			            array1[i][6] = status;
+			            array1[i][7] = position;
+			            array1[i][8] = projectID;
+			        }
+					table.setModel(new DefaultTableModel(
+							array1,
+							new String[] {
+								"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+							}
+						));
 					frame2.setVisible(true);
 					frame4.setVisible(false);
 				}
@@ -340,12 +476,206 @@ public class TaskView {
 				+ "|" + txtProjectid.getText();
 				test.addTask(infor);
 				test.saveTaskController();
-				test.updateTaskController();
+				String[][] array1 = new String[test.getListOfTask().size()][9];
+				for (int i = 0; i < test.getListOfTask().size(); i++) {
+		            // Lấy ra Object hiện tại
+		            Task Ta = test.getListOfTask().get(i);
+
+		            // Lấy ra tên và tuổi của Object hiện tại
+		            String id = Ta.getId();
+		            String name = Ta.getTaskName();
+		            String description = Ta.getDescription();
+		            String creationDate = Ta.getCreationDate();
+		            String startDate = Ta.getStartDate();
+		            String dueDate = Ta.getDueDate();
+		            String status = Ta.getStatus();
+		            String position = Ta.getPosition();
+		            String projectID = Ta.getProjectID();
+		            
+		            // Lưu trữ tên và tuổi vào mảng 2 chiều
+		            array1[i][0] = id;
+		            array1[i][1] = name;
+		            array1[i][2] = description;
+		            array1[i][3] = creationDate;
+		            array1[i][4] = startDate;
+		            array1[i][5] = dueDate;
+		            array1[i][6] = status;
+		            array1[i][7] = position;
+		            array1[i][8] = projectID;
+		        }
+				table.setModel(new DefaultTableModel(
+						array1,
+						new String[] {
+							"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+						}
+					));
 				frame2.setVisible(true);
 				frame5.setVisible(false);
 			}
+		});
+		
+		btnNewButton_8.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				frame2.setVisible(false);
+				frame6.setVisible(true);
+			}
 			
 		});
+		
+		btnNewButton_9.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				frame2.setVisible(false);
+				frame7.setVisible(true);
+			}
+			
+		});
+
+		btnNewButton_10.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String text = textField_1.getText();
+				String infor = textField_2.getText();
+				int x = 0;
+				for(Task i : test.getListOfTask()) {
+					if(i.getId().equals(text)) {
+						x += 1;
+						break;
+					}
+				}
+				if(x==1) {
+					test.updateTaskStatus(text, infor);
+					test.saveTaskController();
+					String[][] array1 = new String[test.getListOfTask().size()][9];
+					for (int i = 0; i < test.getListOfTask().size(); i++) {
+			            // Lấy ra Object hiện tại
+			            Task Ta = test.getListOfTask().get(i);
+
+			            // Lấy ra tên và tuổi của Object hiện tại
+			            String id = Ta.getId();
+			            String name = Ta.getTaskName();
+			            String description = Ta.getDescription();
+			            String creationDate = Ta.getCreationDate();
+			            String startDate = Ta.getStartDate();
+			            String dueDate = Ta.getDueDate();
+			            String status = Ta.getStatus();
+			            String position = Ta.getPosition();
+			            String projectID = Ta.getProjectID();
+			            
+			            // Lưu trữ tên và tuổi vào mảng 2 chiều
+			            array1[i][0] = id;
+			            array1[i][1] = name;
+			            array1[i][2] = description;
+			            array1[i][3] = creationDate;
+			            array1[i][4] = startDate;
+			            array1[i][5] = dueDate;
+			            array1[i][6] = status;
+			            array1[i][7] = position;
+			            array1[i][8] = projectID;
+			        }
+					table.setModel(new DefaultTableModel(
+							array1,
+							new String[] {
+								"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+							}
+						));
+					frame2.setVisible(true);
+					frame6.setVisible(false);
+				}
+				else {
+					textField_1.setText("Không có task bạn đang tìm");
+				}
+			}
+			
+		});
+		
+		btnNewButton_11.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				frame2.setVisible(true);
+				frame6.setVisible(false);
+			}
+			
+		});
+		
+		btnNewButton_12.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String text = textField_3.getText();
+				String infor = textField_4.getText();
+				int x = 0;
+				for(Task i : test.getListOfTask()) {
+					if(i.getId().equals(text)) {
+						x += 1;
+						break;
+					}
+				}
+				if(x==1) {
+					test.changeTaskPosition(text, infor);
+					test.saveTaskController();
+					String[][] array1 = new String[test.getListOfTask().size()][9];
+					for (int i = 0; i < test.getListOfTask().size(); i++) {
+			            // Lấy ra Object hiện tại
+			            Task Ta = test.getListOfTask().get(i);
+
+			            // Lấy ra tên và tuổi của Object hiện tại
+			            String id = Ta.getId();
+			            String name = Ta.getTaskName();
+			            String description = Ta.getDescription();
+			            String creationDate = Ta.getCreationDate();
+			            String startDate = Ta.getStartDate();
+			            String dueDate = Ta.getDueDate();
+			            String status = Ta.getStatus();
+			            String position = Ta.getPosition();
+			            String projectID = Ta.getProjectID();
+			            
+			            // Lưu trữ tên và tuổi vào mảng 2 chiều
+			            array1[i][0] = id;
+			            array1[i][1] = name;
+			            array1[i][2] = description;
+			            array1[i][3] = creationDate;
+			            array1[i][4] = startDate;
+			            array1[i][5] = dueDate;
+			            array1[i][6] = status;
+			            array1[i][7] = position;
+			            array1[i][8] = projectID;
+			        }
+					table.setModel(new DefaultTableModel(
+							array1,
+							new String[] {
+								"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+							}
+						));
+					frame2.setVisible(true);
+					frame7.setVisible(false);
+				}
+				else {
+					textField_3.setText("Không có task bạn đang tìm");
+				}
+			}
+			
+		});
+		
+		btnNewButton_13.ad7ActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				frame2.setVisible(true);
+				frame7.setVisible(false);
+			}
+			
+		});
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

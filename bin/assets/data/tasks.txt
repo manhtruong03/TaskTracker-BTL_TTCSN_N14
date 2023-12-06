@@ -1,9 +1,4 @@
-8
-main.java.models.Task@36d64342|Text2|Date|TaskID|UserID|null|alabatrap|god|null
-main.java.models.Task@39ba5a14|Text3|Date|TaskID|UserID|null|null|god|null
-main.java.models.Task@511baa65|Text1|Date|TaskID|UserID|null|null|null|null
-main.java.models.Task@340f438e|Text2|Date|TaskID|UserID|null|null|null|null
-main.java.models.Task@30c7da1e|Text3|Date|TaskID|UserID|null|null|null|null
-main.java.models.Task@5b464ce8|Text1|Date|TaskID|UserID|null|null|null|null
-main.java.models.Task@57829d67|Text2|Date|TaskID|UserID|null|null|null|null
-main.java.models.Task@19dfb72a|Text3|Date|TaskID|UserID|null|null|null|null
+3
+main.java.models.Task@5b738e92|Text1|Date|TaskID|UserID|1|2|3|4
+main.java.models.Task@32840564|TaskName|Description|CreationDate|StartDate|Duedate|Status|god|ProjectID
+main.java.models.Task@35a65e42|Text3|Date|TaskID|UserID|null|null|null|null

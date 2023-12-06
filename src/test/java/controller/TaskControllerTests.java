@@ -24,6 +24,7 @@ public class TaskControllerTests {
 		}
 		
 		test.deleteTask("task-1");
+		test.deleteTask("task-2");
 		System.out.println("=========DELETE===========");
 		test.viewTask();
 		test.updateTaskStatus("task-2", "alabatrap");

@@ -53,7 +53,8 @@ public class frame2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frame2() {			
+	public frame2() {
+		setResizable(false);			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -61,7 +62,8 @@ public class frame2 extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		// Đặt frame thành chế độ toàn màn hình
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		JLabel lblNewLabel = new JLabel("MÀN HÌNH XEM CÁC NHIỆM VỤ");
 		lblNewLabel.setBounds(25, 11, 183, 14);
 		contentPane.add(lblNewLabel);

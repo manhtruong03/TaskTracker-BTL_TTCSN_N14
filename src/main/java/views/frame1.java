@@ -33,6 +33,7 @@ public class frame1 extends JFrame {
 	 * Create the frame.
 	 */
 	public frame1() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
