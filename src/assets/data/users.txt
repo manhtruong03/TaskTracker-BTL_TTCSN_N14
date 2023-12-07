@@ -1,6 +1,5 @@
  ID|     Name	   |	Email		 |  Phone	|  Pass	 |	Date	|Avatar 
-nv2|Nguyễn Anh Tiến|Tienna@gmail.com|0123456789|012345678|10/19/2004|abd2
-nv3|Nguyễn Công Thành|Thanhnc@gmail.com|0123456789|012345678|10/19/2005|abf7
-nv4|Trương Công Mạnh|Manhtc@gmail.com|0123456789|012345678|10/19/2006|abg4
-nv5|Nguyễn Minh Quang|Quangnm@gmail.com|0123456789|012345678|10/10/2010|hnbd
-nv1|Nguyễn Bá Thông|Thongnb@gmail.com|0123456789|12345678|10/19/2003|abc1
+NV2|Nguyễn Anh Tiến|Tienna@gmail.com|0123456789|12345678|19/10/2023|qasde
+NV3|Nguyễn Minh Quang|Quangnm@gmail.com|0123456789|12345678|19/10/2023|qasde
+NV4|Trương Công Mạnh|Manhtc@gmail.com|0123456789|123456789871|19/10/2023|qasde
+NV5|Nguyễn Công Thành|Thanhnc@gmail.com|0123456789|12345678|19/10/2023|qasde

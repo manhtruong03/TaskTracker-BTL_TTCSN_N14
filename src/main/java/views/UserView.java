@@ -33,7 +33,6 @@ public class UserView extends JFrame {
 	DefaultTableModel tableModel = new DefaultTableModel();
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField txt_id;
 	private JTextField txt_fullname;
 	private JTextField txt_email;
 	private JTextField txt_phone;
@@ -42,6 +41,7 @@ public class UserView extends JFrame {
 	private JTextField txt_avatar;
 	private JTable tbl_account;
 	private int selectedRowIndex;
+	private static int maxId = 0;
 
 	/**
 	 * Launch the application.
@@ -90,8 +90,6 @@ public class UserView extends JFrame {
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(tbl_account, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE)));
 
-		JLabel lblNewLabel = new JLabel("ID:");
-
 		JLabel lblFullName = new JLabel("Full Name:");
 
 		JLabel lblEmail = new JLabel("Email:");
@@ -103,9 +101,6 @@ public class UserView extends JFrame {
 		JLabel lblDateJoin = new JLabel("Date Join:");
 
 		JLabel lblAvatar = new JLabel("Avatar:");
-
-		txt_id = new JTextField();
-		txt_id.setColumns(10);
 
 		txt_fullname = new JTextField();
 		txt_fullname.setColumns(10);
@@ -128,7 +123,9 @@ public class UserView extends JFrame {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String id = txt_id.getText();
+				int newID = maxId + 1;
+				maxId++;
+				String id = "NV" + newID;
 				String name = txt_fullname.getText();
 				String email = txt_email.getText();
 				String phone = txt_phone.getText();
@@ -168,7 +165,7 @@ public class UserView extends JFrame {
 		JButton btnReset = new JButton("Reset");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txt_id.setText("");
+
 				txt_fullname.setText("");
 				txt_email.setText("");
 				txt_phone.setText("");
@@ -183,7 +180,7 @@ public class UserView extends JFrame {
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Lấy thông tin mới từ các trường nhập liệu
-				String newId = txt_id.getText();
+
 				String newName = txt_fullname.getText();
 				String newEmail = txt_email.getText();
 				String newPhone = txt_phone.getText();
@@ -192,7 +189,7 @@ public class UserView extends JFrame {
 				String newAvatar = txt_avatar.getText();
 
 				// Cập nhật dữ liệu trong JTable
-				tableModel.setValueAt(newId, selectedRowIndex, 0);
+
 				tableModel.setValueAt(newName, selectedRowIndex, 1);
 				tableModel.setValueAt(newEmail, selectedRowIndex, 2);
 				tableModel.setValueAt(newPhone, selectedRowIndex, 3);
@@ -237,7 +234,7 @@ public class UserView extends JFrame {
 					String avatar = (String) tableModel.getValueAt(selectedRowIndex, 6);
 
 					// Hiển thị hộp thoại nhập liệu để chỉnh sửa thông tin
-					txt_id.setText(id);
+
 					txt_fullname.setText(name);
 					txt_email.setText(email);
 					txt_phone.setText(phone);
@@ -288,6 +285,8 @@ public class UserView extends JFrame {
 
 						// Xóa bản ghi khỏi model
 						tableModel.removeRow(selectedRow); // Đã cập nhật số lượng hàng hiện tại
+						// Reset các trường nhập liệu sau khi sửa
+						btnReset.doClick();
 					}
 				}
 
@@ -295,69 +294,41 @@ public class UserView extends JFrame {
 		});
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-						.addGroup(gl_panel
-								.createParallelGroup(
-										Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup().addContainerGap()
+				.addGroup(gl_panel.createSequentialGroup().addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup().addGap(78).addComponent(btnAdd).addGap(57)
+								.addComponent(btnReset).addGap(55).addComponent(btnEdit).addGap(61)
+								.addComponent(btnDelete))
+						.addGroup(gl_panel.createSequentialGroup().addContainerGap().addGroup(gl_panel
+								.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblAvatar, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblDateJoin, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblEmail, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblFullName).addComponent(lblPhoneNumber, GroupLayout.PREFERRED_SIZE, 133,
+										GroupLayout.PREFERRED_SIZE))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+										.addComponent(txt_phone, GroupLayout.PREFERRED_SIZE, 295,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(txt_email, GroupLayout.PREFERRED_SIZE, 295,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(txt_fullname, GroupLayout.PREFERRED_SIZE, 295,
+												GroupLayout.PREFERRED_SIZE)
 										.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblAvatar, GroupLayout.PREFERRED_SIZE, 82,
+												.addComponent(txt_avatar, GroupLayout.PREFERRED_SIZE, 295,
 														GroupLayout.PREFERRED_SIZE)
-												.addComponent(lblDateJoin, GroupLayout.PREFERRED_SIZE, 82,
+												.addComponent(txt_date, GroupLayout.PREFERRED_SIZE, 295,
 														GroupLayout.PREFERRED_SIZE)
-												.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 82,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(lblEmail, GroupLayout.PREFERRED_SIZE, 50,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(lblFullName)
-												.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 25,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(
-														lblPhoneNumber, GroupLayout.PREFERRED_SIZE, 133,
-														GroupLayout.PREFERRED_SIZE))
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-												.addGroup(gl_panel.createSequentialGroup().addGap(86)
-														.addComponent(txt_avatar, GroupLayout.PREFERRED_SIZE, 295,
-																GroupLayout.PREFERRED_SIZE))
-												.addGroup(
-														gl_panel.createSequentialGroup().addGap(86).addComponent(
-																txt_date, GroupLayout.PREFERRED_SIZE, 295,
-																GroupLayout.PREFERRED_SIZE))
-												.addGroup(gl_panel
-														.createSequentialGroup().addGap(86).addComponent(txt_pass,
-																GroupLayout.PREFERRED_SIZE, 295,
-																GroupLayout.PREFERRED_SIZE))
-												.addGroup(gl_panel.createSequentialGroup()
-														.addPreferredGap(ComponentPlacement.RELATED,
-																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-																.addComponent(txt_phone, Alignment.TRAILING,
-																		GroupLayout.PREFERRED_SIZE, 295,
-																		GroupLayout.PREFERRED_SIZE)
-																.addComponent(txt_email, Alignment.TRAILING,
-																		GroupLayout.PREFERRED_SIZE, 295,
-																		GroupLayout.PREFERRED_SIZE)
-																.addComponent(txt_fullname, Alignment.TRAILING,
-																		GroupLayout.PREFERRED_SIZE, 295,
-																		GroupLayout.PREFERRED_SIZE)
-																.addComponent(txt_id, Alignment.TRAILING,
-																		GroupLayout.PREFERRED_SIZE, 295,
-																		GroupLayout.PREFERRED_SIZE)))))
-								.addGroup(gl_panel.createSequentialGroup().addGap(78).addComponent(btnAdd).addGap(57)
-										.addComponent(btnReset).addGap(55).addComponent(btnEdit).addGap(61)
-										.addComponent(btnDelete)))
-						.addContainerGap(243, Short.MAX_VALUE)));
+												.addComponent(txt_pass, GroupLayout.PREFERRED_SIZE, 295,
+														GroupLayout.PREFERRED_SIZE)))))
+						.addContainerGap(245, Short.MAX_VALUE)));
 		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
+				.addGroup(gl_panel.createSequentialGroup().addGap(20)
 						.addGroup(gl_panel
 								.createParallelGroup(
 										Alignment.TRAILING)
 								.addGroup(
 										gl_panel.createSequentialGroup()
-												.addComponent(txt_id, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
 												.addComponent(txt_fullname, GroupLayout.PREFERRED_SIZE,
 														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 												.addGap(9)
@@ -372,14 +343,11 @@ public class UserView extends JFrame {
 												.addPreferredGap(ComponentPlacement.RELATED)
 												.addComponent(txt_date, GroupLayout.PREFERRED_SIZE,
 														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txt_avatar, GroupLayout.PREFERRED_SIZE,
+												.addPreferredGap(ComponentPlacement.RELATED).addComponent(
+														txt_avatar, GroupLayout.PREFERRED_SIZE,
 														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addGroup(
 										gl_panel.createSequentialGroup()
-												.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 22,
-														GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
 												.addComponent(lblFullName, GroupLayout.PREFERRED_SIZE, 21,
 														GroupLayout.PREFERRED_SIZE)
 												.addPreferredGap(ComponentPlacement.RELATED)
@@ -396,10 +364,10 @@ public class UserView extends JFrame {
 														GroupLayout.PREFERRED_SIZE)
 												.addPreferredGap(ComponentPlacement.RELATED).addComponent(lblAvatar,
 														GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
-						.addGap(30)
+						.addGap(57)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE).addComponent(btnAdd)
 								.addComponent(btnReset).addComponent(btnEdit).addComponent(btnDelete))
-						.addContainerGap(32, Short.MAX_VALUE)));
+						.addContainerGap(23, Short.MAX_VALUE)));
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(groupLayout);
 
