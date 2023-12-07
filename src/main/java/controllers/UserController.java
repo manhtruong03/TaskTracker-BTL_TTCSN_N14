@@ -1,5 +1,6 @@
 package main.java.controllers;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public static int userIDCounter = 0;
 	public void setListOfUser(List<User> listOfUser) {
 		this.listOfUser = listOfUser;
 	}
-
+	
 	public boolean addUser(String info) {
 		String newID = TrelloModel.generateID("user", ++userIDCounter);
 		User user = new User(newID);
