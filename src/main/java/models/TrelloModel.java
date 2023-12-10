@@ -29,7 +29,7 @@ public class TrelloModel {
 	}
 	
 	public <T extends TrelloModel> String toString(T obj) {
-		String str = super.toString();
+		String str = id;
 		for (Field field : obj.getClass().getDeclaredFields()) {
 			field.setAccessible(true);
 			try {
