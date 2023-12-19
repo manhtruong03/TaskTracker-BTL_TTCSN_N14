@@ -127,6 +127,7 @@ public class DetailTaskView extends JFrame {
 		addMemberButton.addActionListener(e -> {
 			// Hiển thị hộp thoại nhập liệu để lấy email của thành viên mới
 			tmc = new TaskMemberController();
+			 JTextField txtEmail = new JTextField();
 			String taskname = "";
 			for (TaskMember tm : tmc.getListOfTaskMembers()) {
 				if (tm.getTaskID().equals(taskID) && tm.getProjectID().equals(projecID)) {
@@ -138,45 +139,51 @@ public class DetailTaskView extends JFrame {
 				}
 			}
 			taskname += "Enter the email of the new member:";
+			
+			Object[] thongbao = {
+					taskname, txtEmail
+			};
 
-			String email = JOptionPane.showInputDialog(null, taskname, "Nhập thông tin",
-					JOptionPane.INFORMATION_MESSAGE);
-			String userID = "";
-			int count = 0;
-			for (TaskMember tm : tmc.getListOfTaskMembers()) {
-				if (tm.getTaskID().equals(taskID) && tm.getProjectID().equals(projecID)) {
-					for (User user : uc.getListOfUser()) {
-						if (user.getEmail().equals(email)) {
-							ImageIcon iconadd = new ImageIcon(user.getAvatar());
-							JLabel labeladd = new JLabel(iconadd);
-							memberIconPanel.add(labeladd);
+			int option = JOptionPane.showConfirmDialog(null, thongbao, "Nhập thông tin", JOptionPane.OK_CANCEL_OPTION);
+			if(option == JOptionPane.OK_OPTION) {
+				String email = txtEmail.getText();
+				String userID = "";
+				int count = 0;
+				for (TaskMember tm : tmc.getListOfTaskMembers()) {
+					if (tm.getTaskID().equals(taskID) && tm.getProjectID().equals(projecID)) {
+						for (User user : uc.getListOfUser()) {
+							if (user.getEmail().equals(email)) {
+								ImageIcon iconadd = new ImageIcon(user.getAvatar());
+								JLabel labeladd = new JLabel(iconadd);
+								memberIconPanel.add(labeladd);
 
-							userID = user.getId();
+								userID = user.getId();
 
-							// Cập nhật giao diện
-							memberIconPanel.revalidate();
-							memberIconPanel.repaint();
+								// Cập nhật giao diện
+								memberIconPanel.revalidate();
+								memberIconPanel.repaint();
 
-							JOptionPane.showMessageDialog(null, "Thêm thành công", "Notification",
-									JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Thêm thành công", "Notification",
+										JOptionPane.INFORMATION_MESSAGE);
+								break;
+							}
+						}
+						if (userID.equals("")) {
+							count++;
+						} else {
 							break;
 						}
 					}
-					if (userID.equals("")) {
-						count++;
-					} else {
-						break;
-					}
 				}
-			}
-			if (count != 0) {
-				JOptionPane.showMessageDialog(null, "Người dùng không tồn tại", "Error", JOptionPane.ERROR_MESSAGE);
-			} else {
-				String newMemOfTask = projecID + "|" + userID + "|" + taskID;
+				if (count != 0) {
+					JOptionPane.showMessageDialog(null, "Người dùng không tồn tại", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					String newMemOfTask = projecID + "|" + userID + "|" + taskID;
 
-				tmc.addTaskMember(newMemOfTask);
+					tmc.addTaskMember(newMemOfTask);
 
-				DAO.saveData(tmc.getListOfTaskMembers(), DAO.TASK_MEMBER_FILE_PATH, tmc.taskMemIDCounter);
+					DAO.saveData(tmc.getListOfTaskMembers(), DAO.TASK_MEMBER_FILE_PATH, tmc.taskMemIDCounter);
+				}
 			}
 		});
 		leftPanel.add(addMemberButton);

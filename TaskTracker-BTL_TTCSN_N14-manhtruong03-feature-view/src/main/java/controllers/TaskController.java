@@ -55,16 +55,16 @@ public static int taskIDCounter = 0;
 	
 	public static void main(String[] args) {
 		TaskController tc = new TaskController();
-//		String t1 = "TaskName1|Des1|CreateDate1|StartDate1|DueDate1|Status1|1|proj-1";
-//		String t2 = "TaskName2|Des2|CreateDate1|StartDate1|DueDate1|Status1|2|proj-2";
-//		String t3 = "TaskName3|Des3|CreateDate1|StartDate1|DueDate1|Status1|3|proj-1";
-//		String t4 = "TaskName4|Des4|CreateDate1|StartDate1|DueDate1|Status1|4|proj-3";
+//		String t1 = "TaskName1|Des1|CreateDate1|StartDate1|DueDate1|To do|1|proj-1";
+//		String t2 = "TaskName2|Des2|CreateDate1|StartDate1|DueDate1|Doing|2|proj-2";
+//		String t3 = "TaskName3|Des3|CreateDate1|StartDate1|DueDate1|Done|3|proj-1";
+//		String t4 = "TaskName4|Des4|CreateDate1|StartDate1|DueDate1|To do|4|proj-3";
 //		
 //		tc.addTask(t1);
 //		tc.addTask(t2);
 //		tc.addTask(t3);
 //		tc.addTask(t4);
-//		
+////		
 //		DAO.saveData(tc.getListOfTask(), DAO.TASK_FILE_PATH, taskIDCounter);
 		
 		for (Task t: tc.getListOfTask()) {

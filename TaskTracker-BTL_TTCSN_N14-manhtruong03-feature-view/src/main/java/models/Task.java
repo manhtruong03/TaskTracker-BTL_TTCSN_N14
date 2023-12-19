@@ -8,7 +8,7 @@ public class Task extends TrelloModel {
 	private String startDate;
 	private String dueDate;
 	private String status;
-	private String position;
+	private int position;
 	private String projectID;
 	
 	public Task() {
@@ -24,7 +24,7 @@ public class Task extends TrelloModel {
 	}
 
 	public Task(String taskName, String description, String creationDate, String startDate, String dueDate,
-			String status, String position) {
+			String status, String position, String projectID) {
 		super();
 		this.taskName = taskName;
 		this.description = description;
@@ -32,7 +32,8 @@ public class Task extends TrelloModel {
 		this.startDate = startDate;
 		this.dueDate = dueDate;
 		this.status = status;
-		this.position = position;
+		this.position = Integer.parseInt(position);
+		this.projectID = projectID;
 	}
 
 	public String getTaskName() {
@@ -83,11 +84,11 @@ public class Task extends TrelloModel {
 		this.status = status;
 	}
 
-	public String getPosition() {
+	public int getPosition() {
 		return position;
 	}
 
-	public void setPosition(String position) {
+	public void setPosition(int position) {
 		this.position = position;
 	}
 
@@ -98,5 +99,14 @@ public class Task extends TrelloModel {
 	public void setProjectID(String projectID) {
 		this.projectID = projectID;
 	}
+
+	@Override
+	public String toString() {
+		return "Task [" +super.toString() +  ", taskName=" + taskName + ", description=" + description + ", creationDate=" + creationDate
+				+ ", startDate=" + startDate + ", dueDate=" + dueDate + ", status=" + status + ", position=" + position
+				+ ", projectID=" + projectID + "]";
+	}
+	
+	
 	
 }

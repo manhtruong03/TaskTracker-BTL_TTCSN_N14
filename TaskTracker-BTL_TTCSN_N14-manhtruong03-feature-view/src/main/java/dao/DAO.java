@@ -52,10 +52,20 @@ public class DAO {
 		    while ((line = reader.readLine()) != null) {
 		    	String[] parts = line.split("\\|");
 		    	T instance = constructor.newInstance();
-		    	
+
 		    	for (int i = 0; i < fields.size(); ++i) {
-		    		fields.get(i).setAccessible(true);
-		    		fields.get(i).set(instance, parts[i]);
+		    	    Field field = fields.get(i);
+		    	    field.setAccessible(true);
+		    	    // Check the type of the field and convert the string value accordingly
+		    	    if (field.getType().equals(int.class)) {
+		    	        field.set(instance, Integer.parseInt(parts[i]));
+		    	    } else if (field.getType().equals(double.class)) {
+		    	        field.set(instance, Double.parseDouble(parts[i]));
+		    	    } else if (field.getType().equals(boolean.class)) {
+		    	        field.set(instance, Boolean.parseBoolean(parts[i]));
+		    	    } else {
+		    	        field.set(instance, parts[i]);
+		    	    }
 		    	}
 		    	list.add(instance);    	
 		    }

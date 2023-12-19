@@ -20,12 +20,21 @@ public class DataManipulation {
 		Field[] fields = instance.getClass().getDeclaredFields();
 		
 		for (int i = 0; i < fields.length; i++) {
-			fields[i].setAccessible(true);
-			try {
-				fields[i].set(instance, info[i]);
-			} catch (IllegalArgumentException | IllegalAccessException e) {
-				 e.printStackTrace();
-			}
+			Field field = fields[i];
+		    field.setAccessible(true);
+		    try {
+		        if (field.getType().equals(int.class)) {
+		            field.set(instance, Integer.parseInt(info[i]));
+		        } else if (field.getType().equals(double.class)) {
+		            field.set(instance, Double.parseDouble(info[i]));
+		        } else if (field.getType().equals(boolean.class)) {
+		            field.set(instance, Boolean.parseBoolean(info[i]));
+		        } else {
+		            field.set(instance, info[i]);
+		        }
+		    } catch (IllegalArgumentException | IllegalAccessException e) {
+		        e.printStackTrace();
+		    }
 		}
 		return instance;
 	}
