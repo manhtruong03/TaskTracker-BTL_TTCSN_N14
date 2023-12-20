@@ -16,7 +16,7 @@ public static int userIDCounter = 0;
 
 	public UserController() {
 		super();
-		DAO.loadData(listOfUser, DAO.USER_FILE_PATH, new User());
+		userIDCounter = DAO.loadData(listOfUser, DAO.USER_FILE_PATH, new User());
 	}
 
 	public UserController(List<User> listOfUser) {

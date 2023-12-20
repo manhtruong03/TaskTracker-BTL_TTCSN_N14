@@ -8,17 +8,18 @@ public class User extends TrelloModel {
 	private String encryptedPassword;
 	private String dateJoined;
 	private String avatar;
-	
+	private String accountRole;
+
 	public User() {
 		super();
 	}
-	
+
 	public User(String userID) {
 		super(userID);
 	}
 
 	public User(String fullName, String email, String phoneNumber, String encryptedPassword, String dateJoined,
-			String avatar) {
+			String avatar, String accountrole) {
 		super();
 		this.fullName = fullName;
 		this.email = email;
@@ -26,6 +27,7 @@ public class User extends TrelloModel {
 		this.encryptedPassword = encryptedPassword;
 		this.dateJoined = dateJoined;
 		this.avatar = avatar;
+		this.accountRole = accountrole;
 	}
 
 	public String getFullName() {
@@ -75,5 +77,13 @@ public class User extends TrelloModel {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	
+
+	public String getAccountRole() {
+		return accountRole;
+	}
+
+	public void setAccountRole(String accountrole) {
+		this.accountRole = accountrole;
+	}
+
 }

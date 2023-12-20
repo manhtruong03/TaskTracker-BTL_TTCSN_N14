@@ -1,5 +1,6 @@
- ID|     Name	   |	Email		 |  Phone	|  Pass	 |	Date	|Avatar 
-NV2|Nguyễn Anh Tiến|Tienna@gmail.com|0123456789|12345678|19/10/2023|qasde
-NV3|Nguyễn Minh Quang|Quangnm@gmail.com|0123456789|12345678|19/10/2023|qasde
-NV4|Trương Công Mạnh|Manhtc@gmail.com|0123456789|123456789871|19/10/2023|qasde
-NV5|Nguyễn Công Thành|Thanhnc@gmail.com|0123456789|12345678|19/10/2023|qasde
+20
+user-1|Nguyễn Minh Quang|quangkedo2003@gmail.com|0334973459|123@abc|15-10-2021|abcxyz|User
+user-2|Trương Công Mạnh|manhtc@gmail.com|0334973459|123@abc|20-09-2021|abcxyz|Admin
+user-3|Nguyễn Công Thành|thanhnc@gmail.com|0334973459|123@abc|01-11-2021|abcxyz|User
+user-4|Nguyễn Anh Tiến|tienna@gmail.com|0334973459|123@abc|25-12-2021|abcxyz|User
+user-5|Nguyễn Bá Thông|thongnb@gmail.com|0334973459|123@abc|30-08-2021|abcxyz|Admin
