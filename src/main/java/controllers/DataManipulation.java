@@ -12,7 +12,15 @@ import main.java.utils.CompareById;
 public class DataManipulation {
 	
 	public static <T extends TrelloModel> int getPositionById(List<T> list, String id) {
-		return Collections.binarySearch(list, new TrelloModel(id), new CompareById());
+		int index = 0;
+		try {
+			index = Collections.binarySearch(list, new TrelloModel(id), new CompareById());
+//			Collections.bi
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("lỗi ở đây");
+		}
+		return index;
 	}
 	
 	public static <T extends TrelloModel> T createElement(T instance, String message) {
@@ -44,6 +52,7 @@ public class DataManipulation {
 	
 	public static <T extends TrelloModel> boolean deleteElement(List<T> list, String id) {
 		int index = getPositionById(list, id);
+		System.out.println("Pos: " + index);
 		list.remove(index);
 		return true;
 	}

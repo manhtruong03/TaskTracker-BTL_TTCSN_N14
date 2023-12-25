@@ -14,7 +14,7 @@ public static int taskIDCounter = 0;
 
 	public TaskController() {
 		super();
-		DAO.loadData(listOfTask, DAO.TASK_FILE_PATH, new Task());
+		taskIDCounter = DAO.loadData(listOfTask, DAO.TASK_FILE_PATH, new Task());
 	}
 
 	public TaskController(List<Task> listOfTask) {

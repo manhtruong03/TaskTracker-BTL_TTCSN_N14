@@ -13,7 +13,7 @@ public static int memIDCounter = 0;
 
 	public ProjectMemberController() {
 		super();
-		DAO.loadData(listOfProjectMember, DAO.PROJECT_MEMBER_FILE_PATH, new ProjectMember());
+		memIDCounter = DAO.loadData(listOfProjectMember, DAO.PROJECT_MEMBER_FILE_PATH, new ProjectMember());
 	}
 
 	public ProjectMemberController(List<ProjectMember> listOfProjectMember) {
@@ -42,5 +42,29 @@ public static int memIDCounter = 0;
 	
 	public boolean deleteProjectMember(String id) {
 		return DataManipulation.deleteElement(listOfProjectMember, id);
+	}
+	
+	public static void main(String[] args) {
+		ProjectMemberController pmc = new ProjectMemberController();
+		
+		String info = "user-1|proj-2|2";
+//		pmc.addProjectMember(info);
+//		pmc.addProjectMember(info);//
+//		pmc.addProjectMember(info);
+//		pmc.addProjectMember(info);
+//		pmc.addProjectMember(info);
+		
+		for (ProjectMember pmMember : pmc.getListOfProjectMember()) {
+			System.out.println(pmMember.toString(new ProjectMember()));
+		}
+		
+		pmc.deleteProjectMember("mem-14");
+		System.out.println("XOA");
+		
+		for (ProjectMember pmMember : pmc.getListOfProjectMember()) {
+			System.out.println(pmMember.toString(new ProjectMember()));
+		}
+		
+		DAO.saveData(pmc.getListOfProjectMember(), DAO.PROJECT_MEMBER_FILE_PATH, pmc.memIDCounter);
 	}
 }
