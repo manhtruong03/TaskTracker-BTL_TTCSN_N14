@@ -9,13 +9,13 @@ import main.java.models.TrelloModel;
 
 public class UserController {
 
-public static int userIDCounter = 0;
+	public static int userIDCounter = 0;
 	
 	private List<User> listOfUser = new ArrayList<>();
 
 	public UserController() {
 		super();
-		DAO.loadData(listOfUser, DAO.USER_FILE_PATH, new User());
+		userIDCounter = userIDCounter = DAO.loadData(listOfUser, DAO.USER_FILE_PATH, new User());
 	}
 
 	public UserController(List<User> listOfUser) {
@@ -44,5 +44,20 @@ public static int userIDCounter = 0;
 	
 	public boolean deleteUser(String id) {
 		return DataManipulation.deleteElement(listOfUser, id);
+	}
+	
+	public static void main(String[] args) {
+		UserController usrC = new UserController();
+		String info = "Minh Thong|quanthong@gmail.com|12344567|123@abcd|date|avt";
+//		usrC.addUser(info);
+		usrC.deleteUser("user-4");
+//		usrC.editUser("user-3", info);
+		
+		
+		for (User usr : usrC.getListOfUser()) {
+			System.out.println(usr.toString(new User()));
+		}
+		
+		DAO.saveData(usrC.getListOfUser(), DAO.USER_FILE_PATH, usrC.userIDCounter);
 	}
 }

@@ -1,0 +1,6 @@
+5
+task-1|Tìm hiểu lý thuyết|Des1|CreateDate1|StartDate1|5 tháng 2|TO DO|0|proj-3
+task-2|Triển khai và kiểm thử|Des2|CreateDate1|StartDate1|28 tháng 6|DOING|0|proj-3
+task-3|Lập kế hoạch dự án|Des3|CreateDate1|StartDate1|23 tháng 10|DONE|1|proj-3
+task-4|Phân tích yêu cầu|Des4|CreateDate1|StartDate1|13 tháng 8|DONE|1|proj-3
+task-5|Thiết kế phần mềm|Des5|CreateDate1|StartDate1|9 tháng 12|DONE|0|proj-3

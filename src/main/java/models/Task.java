@@ -24,7 +24,7 @@ public class Task extends TrelloModel {
 	}
 
 	public Task(String taskName, String description, String creationDate, String startDate, String dueDate,
-			String status, int position) {
+			String status, String position) {
 		super();
 		this.taskName = taskName;
 		this.description = description;
@@ -32,7 +32,7 @@ public class Task extends TrelloModel {
 		this.startDate = startDate;
 		this.dueDate = dueDate;
 		this.status = status;
-		this.position = position;
+		this.position = Integer.parseInt(position);
 	}
 
 	public String getTaskName() {

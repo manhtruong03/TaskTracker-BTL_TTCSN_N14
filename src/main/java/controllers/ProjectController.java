@@ -15,7 +15,7 @@ public class ProjectController {
 
 	public ProjectController() {
 		super();
-		DAO.loadData(listOfProject, DAO.PROJECT_FILE_PATH, new Project());
+		projectIDCounter = DAO.loadData(listOfProject, DAO.PROJECT_FILE_PATH, new Project());
 	}
 
 	public ProjectController(List<Project> listOfProject) {

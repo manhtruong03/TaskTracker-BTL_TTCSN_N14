@@ -38,11 +38,11 @@ public class DAO {
 		}
 	}
 	
-	public static <T extends TrelloModel> void loadData(List<T> list, String filePath, T obj) {
+	public static <T extends TrelloModel> int loadData(List<T> list, String filePath, T obj) {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(filePath));
 		    String line = reader.readLine();
-		    CommentController.commentIDCounter = Integer.parseInt(line);
+		    int counter = Integer.parseInt(line);
 		    
 			Class<T> type = (Class<T>) obj.getClass();
 			List<Field> fields = getAllFields(type);
@@ -53,12 +53,24 @@ public class DAO {
 		    	T instance = constructor.newInstance();
 		    	
 		    	for (int i = 0; i < fields.size(); ++i) {
-		    		fields.get(i).setAccessible(true);
-		    		fields.get(i).set(instance, parts[i]);
+		    		Field field = fields.get(i);
+		    		field.setAccessible(true);
+		    		// Check the type of the field and convert the string value accordingly
+	                if (field.getType().equals(int.class)) {
+	                    field.set(instance, Integer.parseInt(parts[i]));
+	                } else if (field.getType().equals(double.class)) {
+	                    field.set(instance, Double.parseDouble(parts[i]));
+	                } else if (field.getType().equals(boolean.class)) {
+	                    field.set(instance, Boolean.parseBoolean(parts[i]));
+	                }
+	                else {
+	                    field.set(instance, parts[i]);
+	                }
 		    	}
 		    	list.add(instance);    	
 		    }
 		    reader.close();
+		    return counter;
 		} catch (FileNotFoundException e) {
 	        System.out.println("Error: File not found");
 	        e.printStackTrace();
@@ -75,6 +87,7 @@ public class DAO {
 	        System.out.println("Error: An unexpected exception occurred");
 	        e.printStackTrace();
 	    }
+		return 0;
 	}
 	
 	public static List<Field> getAllFields(Class<?> type) {

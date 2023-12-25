@@ -1,5 +1,7 @@
 package main.java.models;
 
+import java.util.List;
+
 public class ToDo extends TrelloModel {
 
 	private String title;

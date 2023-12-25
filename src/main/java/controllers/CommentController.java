@@ -15,7 +15,7 @@ public class CommentController {
 
 	public CommentController() {
 		super();
-		DAO.loadData(listOfComment, DAO.COMMENT_FILE_PATH, new Comment());
+	 	commentIDCounter = DAO.loadData(listOfComment, DAO.COMMENT_FILE_PATH, new Comment());
 	}
 
 	public CommentController(List<Comment> listOfComment) {

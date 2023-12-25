@@ -14,7 +14,7 @@ public static int todoIDCounter = 0;
 
 	public ToDoController() {
 		super();
-		DAO.loadData(listOfToDo, DAO.TODO_FILE_PATH, new ToDo());
+		todoIDCounter = DAO.loadData(listOfToDo, DAO.TODO_FILE_PATH, new ToDo());
 	}
 
 	public ToDoController(List<ToDo> listOfToDo) {
